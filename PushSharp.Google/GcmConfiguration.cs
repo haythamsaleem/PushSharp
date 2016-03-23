@@ -38,6 +38,28 @@ namespace PushSharp.Google
         {
             GcmUrl = url;
         }
+           public void SetProxy(string proxyHost, int proxyPort)
+        {
+            UseProxy = true;
+            ProxyHost = proxyHost;
+            ProxyPort = proxyPort;
+            ProxyCredentials = CredentialCache.DefaultNetworkCredentials;
+        }
+
+        public void SetProxy(string proxyHost, int proxyPort, string userName, string password, string domain)
+        {
+            UseProxy = true;
+            ProxyHost = proxyHost;
+            ProxyPort = proxyPort;
+            ProxyCredentials = new NetworkCredential(userName, password, domain);
+        }
+        public bool UseProxy { get;  set; }
+
+        public string ProxyHost { get;  set; }
+
+        public int ProxyPort { get;  set; }
+
+        public NetworkCredential ProxyCredentials { get;  set; }
     }
 }
 
